@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort Visualizer</title>
+    <link rel="stylesheet" href="styleMerge.css">
+</head>
+<body>
+    <header class="project-header">
+        <h1>Merge Sort Visualizer</h1>
+    </header>
+
+    <div class="controls-container">
+        <div class="controls">
+            <div class="input-group">
+                <input type="text" id="numberInput" placeholder="Enter numbers (e.g., 17,20,18,16,14,12,10)">
+                <button class="generateButton">Generate Bars</button>
+            </div>
+            <div class="action-buttons">
+                <button class="sortButton">Merge Sort</button>
+                <button class="restartButton">Restart</button>
+            </div>
+        </div>
+    </div>
+    <div class="speed-control">
+        <label for="speedSlider">Animation Speed:</label>
+        <input type="range" id="speedSlider" min="150" max="600" value="300" step="50">
+        <span id="speedValue">300ms</span>
+    </div>
+   
+    <div class="figures-container"></div>
+    
+    <script src="scriptMerge.js"></script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+:root {
+    --bar-width: 70px;  /* Increased from 50px */
+    --bar-color: #00bcd4;
+    --bar-hover-color: #00d4ff;
+    --highlight-color: orange;
+    --sorted-color: lightgreen;
+    --floor-color: #795548;
+    --primary-bg: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+    --header-bg: rgba(0, 0, 0, 0.2);
+    --text-color: #333;
+    --text-light: #fff;
+}
+
+body {
+    background: var(--primary-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-light);
+}
+
+
+
+.project-header h1 {
+    margin: 0;
+    font-size: 1.8rem;  /* Reduced from 2.5rem */
+    color:  #1edec1;
+    text-shadow: 0 2px 4px rgba(14, 203, 150, 0.3);
+    transform: translate(0 , -22%);
+}
+
+.controls-container {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+#numberInput {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    flex-grow: 1;
+    transition: border-color 0.3s;
+}
+
+#numberInput:focus {
+    outline: none;
+    border-color: #6e48aa;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Container with floor effect */
+.figures-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;  /* Reduced from 25px to accommodate larger bars */
+    margin-top: 20px;
+    position: relative;
+    padding-bottom: 60px;  /* Increased for larger bars */
+    min-height: 400px;  /* Increased for larger bars */
+    width: 100%;
+    max-width: 1000px;  /* Increased from 800px */
+    justify-content: center;
+    overflow-x: auto;  /* Allows horizontal scrolling if needed */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Floor/ground effect */
+.figures-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 5px;  /* Slightly thicker floor */
+    background-color: var(--floor-color);
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Base style for all figures */
+.bar {
+    width: var(--bar-width);
+    background-color: var(--bar-color);
+    position: relative;
+    border-radius: 10px 10px 0 0;  /* More rounded corners */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 40px;  /* Increased for larger bars */
+}
+
+/* Text styling - now positioned on the floor */
+.text {
+    position: absolute;
+    bottom: -40px;  /* Increased for larger bars */
+    width: 100%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: var(--text-color);
+    z-index: 2;
+    font-size: 1.2rem;  /* Increased from 1.1rem */
+}
+
+.bar:hover {
+    transform: translateY(-8px);  /* More pronounced hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background-color: var(--bar-hover-color);
+}
+
+button {
+    padding: 12px 24px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.sortButton {
+    background-color: #4CAF50;
+}
+
+.sortButton:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.generateButton {
+    background-color: #2196F3;
+}
+
+.generateButton:hover {
+    background-color: #0b7dda;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.restartButton {
+    background-color: #f39c12;
+}
+
+.restartButton:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Sorting state classes */
+.comparing {
+    background-color: var(--highlight-color) !important;
+    transform: scale(1.08);  /* More noticeable scale */
+    z-index: 10;
+}
+
+.merge-range {
+    box-shadow: 0 0 0 4px rgba(0, 150, 255, 0.5);  /* Thicker highlight */
+}
+
+.moving {
+    transition: transform 0.3s ease, left 0.3s ease;
+    transform: translateY(-40px);  /* Higher lift */
+    z-index: 20;
+}
+
+.sorted {
+    background-color: var(--sorted-color) !important;
+    transition: background-color 0.5s ease;
+}
+
+/* Celebration animations */
+.celebrating {
+    animation: pulse 0.5s infinite alternate;
+}
+
+.celebrating-final {
+    box-shadow: 0 0 25px gold;  /* More glow */
+    background-color: #4CAF50 !important;
+    transition: all 0.5s ease;
+}
+
+.bounce {
+    animation: bounce 0.3s ease;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255,215,0,0.5);
+    }
+    to {
+        transform: scale(1.08);  /* More pronounced pulse */
+        box-shadow: 0 0 25px gold;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-40px); }  /* Higher bounce */
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    :root {
+        --bar-width: 60px;
+    }
+    
+    .figures-container {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --bar-width: 50px;
+    }
+    
+    .project-header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .controls {
+        padding: 15px;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    button {
+        padding: 10px 15px;
+        min-width: 100px;
+    }
+    
+    .figures-container {
+        gap: 12px;
+        padding-bottom: 50px;
+    }
+    
+    .text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --bar-width: 40px;
+    }
+    
+    .project-header h1 {
+        font-size: 1.4rem;
+    }
+    
+    .text {
+        font-size: 1rem;
+        bottom: -35px;
+    }
+    
+    .figures-container {
+        gap: 8px;
+        padding-bottom: 45px;
+    }
+}
+
+.speed-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;  /* Increased from 10px */
+    margin-top: 12px;  /* Increased from 10px */
+    color: white;
+    font-size: 1.05em;  /* Slightly larger text */
+}
+
+.speed-control label {
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 1.1em;  /* Slightly larger */
+}
+
+#speedSlider {
+    flex-grow: 1;
+    max-width: 320px;  /* Increased from 300px */
+    height: 10px;  /* Slightly thicker track */
+}
+
+#speedValue {
+    min-width: 70px;  /* Increased from 60px */
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.1em;  /* Slightly larger */
+}
+
+input[type="range"] {
+    
+    height: 10px;  /* Increased from 8px */
+    background: #ddd;
+    border-radius: 6px;  /* Slightly more rounded */
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;  /* Increased from 20px */
+    height: 22px;  /* Increased from 20px */
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);  /* Added subtle shadow */
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #45a049;
+    transform: scale(1.15);  /* Slightly more pronounced hover effect */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);  /* Enhanced shadow on hover */
+}
