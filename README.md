@@ -1,27 +1,66 @@
-**Data Structures and Algorithms Visualizer** – a powerful and interactive tool designed to help you learn and explore core computer science concepts in a more visual and intuitive way.
+# Data Structures and Algorithms Visualizer 🎨✨
 
-With this project, you can:
 
-- 🧪 **Test any inputs you want** – customize data and see how algorithms handle them in real time  
-- 👁️ **Visualize complex structures** – understand how data flows through various structures step-by-step  
-- ✅ **Study smarter** – grasp the logic behind each algorithm through clear animations and dynamic feedback  
+The goal of this project is to **make understanding algorithms and data structures easy and interactive**.  
+You can **enter your own inputs** to test how the algorithms and data structures work behind the scenes.  
+Also, you can **control the animation speed** 🐢⚡ to focus and follow each step more clearly.
 
-## 🚀 Features
+---
 
-### Data Structures:
-- Stack  
-- Queue  
-- Linked List  
-- Trees  
-- Graphs  
+## ✨ Features
 
-### Algorithms:
-- Merge Sort  
-- Linear Sort  
-- Binary Search  
-- ...and more to come!
+- **Input your own values** to see how they behave in different structures and sorting/searching algorithms.
+- **Adjust animation speed** to better visualize each operation.
+- **Friendly UI** designed to make learning fun and smooth!
 
-## 🖼️ Screenshots
+---
 
-> Add screenshots of your project here to give users a preview of how it looks!
+## 📚 Currently Available
+
+- Stack 📦
+- Merge Sort 🌀
+
+> More coming soon!
+
+---
+
+## 🛠️ Upcoming Features
+
+I am working on adding visualizations for:
+
+- Queue
+- Linked List
+- Tree
+- Graph
+- Quick Sort
+- Binary Search
+- Linear Sort
+- Dijkstra's Algorithm
+
+
+
+---
+
+## 📸 Screenshots
+![dsa menu](https://github.com/user-attachments/assets/ca218cff-7a7c-45d8-a668-f981c2c6ad13)
+![Screenshot 2025-04-26 233906](https://github.com/user-attachments/assets/65a1431f-ad0b-404a-b8f4-7acc363a4ebd)
+![Screenshot 2025-04-26 234215](https://github.com/user-attachments/assets/69fc0e8c-15f5-478d-a3ce-de8724a29dfd)
+
+---
+
+## 🚀 How to Use
+
+1. Select a data structure or algorithm from the menu.
+2. Enter your custom input values.
+3. Adjust the animation speed if needed.
+4. Watch the algorithm in action!
+
+---
+
+## 🎯 Goal
+
+The main goal of this project is **to help students and enthusiasts understand the working of data structures and algorithms through simple, intuitive animations**.
+
+---
+
 
