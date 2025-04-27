@@ -24,6 +24,11 @@ Also, you can **control the animation speed** 🐢⚡ to focus and follow each s
 
 ---
 
+## 🚀 Live Project
+
+[Click here to view the live site!](https://levanilekvinadze24.github.io/Data-Structures-and-Algorithms-Visualizer-/#)
+
+
 ## 🛠️ Upcoming Features
 
 I am working on adding visualizations for:
