@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Visualization - Fixed Solution</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Stack Visualization</h1>
+
+    <div class="input-container">
+        <label for="capacityInput">Set Stack Capacity:</label>
+        <input type="number" id="capacityInput" placeholder="Enter capacity" min="1">
+        <button onclick="setCapacity()">Set Capacity</button>
+    </div>
+
+    <div class="input-container">
+        <label for="pushInput">Element to Push:</label>
+        <input type="text" id="pushInput" placeholder="Enter element to push">
+        <button onclick="handlePush()">Push</button>
+    </div>
+
+    <div class="visualization-container">
+        <div class="stack-container" id="stackContainer"></div>
+    </div>
+
+    <div class="controls">
+        <button onclick="handlePop()">Pop</button>
+        <div id="capacityDisplay" class="capacity-display"></div>
+    </div>
+
+    <div id="messageBox" class="message-box"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
